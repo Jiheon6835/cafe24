@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객문의목록</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #board {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .post {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>고객문의 목록</h1>
+
+  <div id="board">
+    <!-- 게시글 목록이 여기에 동적으로 추가됩니다. -->
+
+    <!-- 동적으로 추가되는 게시글 목록은 이 부분에 표시됩니다. -->
+  </div>
+
+  <form id="postForm">
+    <!-- 제목과 내용 입력란을 없애고, 게시글 작성 버튼만 남깁니다. -->
+    <button type="button" onclick="redirectToNewPage()">문의 작성</button>
+    <button type="button" onclick="redirectToFAQPage()">FAQ</button>
+  </form>
+
+  <script>
+    function redirectToNewPage() {
+      // 게시글 작성 버튼을 눌렀을 때, 지정된 페이지로 이동합니다.
+      window.location.href = 'http://localhost:3000/cs.html';
+    }
+
+    function redirectToFAQPage() {
+      // 게시글 작성 버튼을 눌렀을 때, 지정된 페이지로 이동합니다.
+      window.location.href = 'http://localhost:3000/FAQ.html';
+    }
+  </script>
+
+  <script>
+     // 페이지 로드 시 서버에서 Q&A 목록을 가져와 UI에 추가하는 함수
+     window.onload = function loadQnAList() {
+      fetch("http://localhost:3000/qnaList")  // 데이터베이스에서 Q&A 목록을 가져올 엔드포인트로 수정
+        .then(response => response.json())
+        .then(data => {
+          // 가져온 Q&A 목록을 동적으로 UI에 추가
+          data.forEach(qna => {
+            addQnAToUI(qna);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching Q&A list:", error);
+        });
+    };
+
+    // 서버에서 가져온 Q&A를 UI에 추가하는 함수
+    function addQnAToUI(qna) {
+      var qnaDiv = document.createElement("div");
+      qnaDiv.className = "post";
+      qnaDiv.innerHTML = `<h2>${qna.subject}</h2><p>${qna.message}</p>`;
+      document.getElementById("board").appendChild(qnaDiv);
+    }
+    // // 페이지 로드 시 서버에서 게시글 목록을 가져와 UI에 추가하는 함수
+    // window.onload = function addPostToUI() {
+    //   fetch("http://localhost:3000/posts.html")  // main.js 파일이 위치한 경로로 수정
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       // 가져온 게시글 목록을 동적으로 UI에 추가
+    //       data.forEach(post => {
+    //         addPostToUI(post);
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.error("Error fetching posts:", error);
+    //     });
+    // };
+
+    // // 서버에서 가져온 게시글을 UI에 추가하는 함수
+    // function addPostToUI(post) {
+    //   var postDiv = document.createElement("div");
+    //   postDiv.className = "post";
+    //   postDiv.innerHTML = `<h2>${post.title}</h2><p>${post.content}</p>`;
+    //   // UI에 추가할 부분을 수정할 수 있습니다.
+    //   document.body.appendChild(postDiv);
+    // }
+  </script>
+</body>
+
+</html>

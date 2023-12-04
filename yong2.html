@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>경북 길라잡이 : 맛집</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            display: center;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                background-color: #ffffff; /* 원하는 배경색 설정 */
+            }
+
+            .logo {
+                display: inline-block;
+            }
+
+            .search-container {
+                display: flex;
+                align-items: center; /* 수직 가운데 정렬 */
+                justify-content: center; /* 수평 가운데 정렬 */
+                background-color: #fff; /* 검색 박스 배경색 */
+                border: 1px solid #ccc; /* 검색 박스 테두리 */
+                padding: 10px;
+                max-width: 700px;
+                width: 100%;
+                margin-left: 50px;
+                border-radius: 10px;
+            }
+
+            #title {
+                border: none;
+                padding: 5px;
+                flex: 1; /* 나머지 공간을 채우도록 설정 */
+            }
+
+            #searchButton {
+                background-color: #ffffff; /* 검색 버튼 배경색 */
+                color: #fff; /* 검색 버튼 텍스트색 */
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+
+            .search-form {
+                display: flex;
+                flex: 1; /* 전체 공간을 차지하도록 설정 */
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                margin-left: 120px;
+                text-decoration: none;
+                color: #000000;
+            }
+
+            .custom-button {
+                margin-left: 30px; /* 버튼 사이 간격 조정 */
+                width: 100px;
+                height: 50px;
+                border-radius: 10px;
+                border: #ffffff;
+                background-color: #ffffff;
+            }
+            .menu {
+                display: flex;
+                background-color: #ffffff;
+                align-items: center;
+                justify-content: center;
+            }
+            .menu a {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            .menu-button {
+                background-color: #ffffff;
+                border: none;
+                padding: 10px;
+                margin: 0px;
+                cursor: pointer;
+                position: relative;
+                border: #ffffff;
+                font-size: larger;
+                font-family: Arial, sans-serif;
+                width: 140px;
+                height: 50px;
+                text-align: center;
+            }
+
+            
+
+            .container {
+                font-size: xx-large;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* 화면 전체 높이에 대한 100% */
+            }
+            
+            .city_box {
+                font-size: large;
+                width: 1280px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin-left: 124px;
+            }
+            
+            .city_box li {
+                width: 256px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+            }
+
+            .city_box a {
+                text-decoration: none;
+                color: #000000;
+              
+            }
+
+            .img {
+                width: 800px; /* 이미지의 최대 너비를 800px로 설정 */
+                height: 540px;
+                margin: 0 auto; /* 가운데 정렬을 위해 margin을 설정 */
+            }
+            .img img {
+                width: 100%;
+                height: auto;
+            }
+            #wishlistbutton {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px; /* 이미지와 텍스트 간격 조절 */
+                border: 2px solid #000000; /* 테두리 스타일 */
+                border-radius: 10px; /* 둥근 모서리 설정 */
+                background-color: transparent;
+                outline: none;
+                padding: 8px; /* 내부 여백 설정 */
+            }
+
+            #wishlistbutton img {
+                width: 50px; /* 이미지의 크기에 맞게 조절하세요 */
+                height: 50px; /* 이미지의 크기에 맞게 조절하세요 */
+            }
+
+            #wishlistbutton h2 {
+                margin: 0; /* 기본적인 마진 제거 */
+                writing-mode: horizontal-tb; /* 글자를 가로로 배치하는 스타일 */
+            }
+            #map {
+                height: 600px;
+                width: 600px;
+                margin: 50px;
+                margin-left: 100px;
+            }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtE8TL2OFfCgNTn2PaaE53TpXvg96X8_A&callback=initMap" async defer></script>
+        <script>
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 36.0225164, lng: 129.3560787 }, // 특정 주소의 좌표를 설정
+                    zoom: 13.5 // 초기 줌 레벨 설정
+                });
+
+                // 마커 추가
+                var marker = new google.maps.Marker({
+                    position: { lat: 36.0225164, lng: 129.3560787 },
+                    map: map,
+                    title: '특정 주소'
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="logo">
+                <a href="Main.html">
+                    <img src="https://postfiles.pstatic.net/MjAyMzEwMTNfMjYw/MDAxNjk3MTYzNjcwMDYy.XPihVSwY_hfqEmHzfC0ToqtTn8FVtTvsFqmXfFzll94g.qHLCwIalJGLgLIH3TmP6WdFGhIxTDLHeAq0zM2cSbDMg.PNG.dnj1510/%EA%B2%BD%EB%B6%81_%EA%B8%B8%EB%9D%AC%EC%9E%A1%EC%9D%B4.png?type=w580" alt="로고">
+                </a>
+            </div>
+            <div class="search-container">
+                <form id="searchForm" name="searchForm" method="post" action="/search.do" class="search-form">
+                    <input type="hidden" id="cate_top">
+                    <input type="text" name="title" id="title" title="검색어 입력" placeholder="검색어를 입력하세요" class="flex-1">
+                    <button type="submit" id="searchButton">
+                        <img src="https://postfiles.pstatic.net/MjAyMzExMDVfMjkw/MDAxNjk5MTc2ODE4MjY1.ip9TlhvhZz4ZCGy8tKMO6vKr-3kOG8T-Zy5MBXG6Yogg.zVE42yT4Hf3MUp96DK93HZOmDslaj_YV0W2uJ0Z7QEUg.PNG.dnj1510/search.png?type=w580" alt="검색">
+                    </button>
+                </form>
+            </div>
+            
+            <div class="buttons">
+                <button class="custom-button"><a href="Wishlist.html">위시리스트</a></button>
+                <button class="custom-button"><a href="MyPage.html">마이페이지</a></button>
+                <button class="custom-button"><a href="Login.html">로그인</a></button>
+                <button class="custom-button"><a href="CS.html">고객센터</a></button>
+            </div>
+        </div>
+        <div class="menu">
+            
+            </div>
+        </div>
+        <div class="container" style="height: 140px;">
+            <span><b>영천</b></span>
+        </div>
+        <div class="city_box">
+            <a href="#"><li>포항</li></a>
+            <a href="#"><li>경주</li></a>
+            <a href="#"><li>울진</li></a>
+            <a href="#"><li>영덕</li></a>
+            <a href="#"><li>영천</li></a>
+        </div>
+        <h2 style="text-align: center;">📍장소: 영천  / 맛집요소:편대장영화식당</h2>
+        <div class="img">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20101005_278%2Fbegopa1092_12862898020664OOXl_JPEG%2FIMG_2752.jpg&type=sc960_832">
+        </div>
+
+        <div style="display: flex; list-style-type: none; align-items: center; justify-content: center;">
+            <li style="width: 500px; font-size: large;">✅주소 : 경북 영천시 강변로 50-15(금노동)</li>
+            <li style="width: 300px; font-size: large;">✅문의 :054-334-2655</li>
+ 	   <li style="width: 300px; font-size: large;"> ✅주차 : 주차가능<li>
+ 	    <li style="width: 300px; font-size: large;">✅시간 : 10:00~21:00</li>
+           <p> <button id="wishlistbutton" onclick="toggleHeart()">
+                <img id="heartImage" src="https://postfiles.pstatic.net/MjAyMzExMzBfMjI0/MDAxNzAxMjczMjU4OTM0.Q2xcoTRvZVzpSQWBXbFcdeOa5jmoqEyEMDldfwgk5RIg.B-6CpUNxXnx48KhrKioJa5k2eeKTN3F3MVTabb3T7WMg.PNG.dnj1510/emptyheart.png?type=w580" alt="하트 이미지">
+                <h2>위시리스트</h2>
+            </button>
+        </div>
+        <div class="info-container">
+            <div id="map"></div>
+            <div>
+                
+            </div>
+        </div>
+        
+
+        <script>
+            var isHeartFilled = false;
+            var heartImage = document.getElementById('heartImage');
+
+            function toggleHeart() {
+                isHeartFilled = !isHeartFilled;
+
+                if (isHeartFilled) {
+                    // 채워진 하트 이미지로 변경
+                    heartImage.src = 'https://postfiles.pstatic.net/MjAyMzExMzBfMTcg/MDAxNzAxMjczMjU4OTM1.lt8uraFWwNykhY-wBuyy-XnzbcVIXDwip3nt93D7E0sg.rbD6kS2ejaLl_n301fDmEydnICyYOh20flICB_wtY08g.PNG.dnj1510/fullheart.png?type=w580';
+                } else {
+                    // 빈 하트 이미지로 변경
+                    heartImage.src = 'https://postfiles.pstatic.net/MjAyMzExMzBfMjI0/MDAxNzAxMjczMjU4OTM0.Q2xcoTRvZVzpSQWBXbFcdeOa5jmoqEyEMDldfwgk5RIg.B-6CpUNxXnx48KhrKioJa5k2eeKTN3F3MVTabb3T7WMg.PNG.dnj1510/emptyheart.png?type=w580';
+                }
+            }
+        </script>
+        
+    </body>
+</html>

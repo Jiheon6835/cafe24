@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Details</title>
+</head>
+<body>
+    <h1>Spot Details</h1>
+
+    <ul>
+        <li>
+            <strong>Spot ID:</strong> <%= spot.spot_id %><br>
+            <strong>Spot Name:</strong> <%= spot.spot_name %><br>
+            <strong>Location:</strong> <%= spot.location %><br>
+            <strong>Phone Number:</strong> <%= spot.phone_numb %><br>
+            <strong>Description:</strong> <%= spot.description %><br>
+            <strong>Category:</strong> <%= spot.category %><br>
+            <strong>Rating:</strong> <%= spot.rationg %><br>
+            <strong>Opening Hours:</strong> <%= spot.opening_hour %><br>
+            <strong>Entry Fee:</strong> <%= spot.entry_fee %><br>
+            <strong>Website URL:</strong> <a href="<%= spot.website_url %>" target="_blank"><%= spot.website_url %></a><br>
+            <strong>Image:</strong> <img src="<%= spot.image_data %>" alt="Spot Image" width="300"><br>
+            <!-- 여기에 필요한 정보들을 추가 -->
+        </li>
+    </ul>
+</body>
+</html>
+asdasd

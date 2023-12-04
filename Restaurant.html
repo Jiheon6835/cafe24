@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>경북 길라잡이 : 테마</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                background-color: #ffffff; /* 원하는 배경색 설정 */
+            }
+
+            .logo {
+                display: inline-block;
+            }
+
+            .search-container {
+                display: flex;
+                align-items: center; /* 수직 가운데 정렬 */
+                justify-content: center; /* 수평 가운데 정렬 */
+                background-color: #fff; /* 검색 박스 배경색 */
+                border: 1px solid #ccc; /* 검색 박스 테두리 */
+                padding: 10px;
+                max-width: 700px;
+                width: 100%;
+                margin-left: 50px;
+                border-radius: 10px;
+            }
+
+            #title {
+                border: none;
+                padding: 5px;
+                flex: 1; /* 나머지 공간을 채우도록 설정 */
+            }
+
+            #searchButton {
+                background-color: #ffffff; /* 검색 버튼 배경색 */
+                color: #fff; /* 검색 버튼 텍스트색 */
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+
+            .search-form {
+                display: flex;
+                flex: 1; /* 전체 공간을 차지하도록 설정 */
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                margin-left: 120px;
+                text-decoration: none;
+                color: #000000;
+            }
+
+            .custom-button {
+                margin-left: 30px; /* 버튼 사이 간격 조정 */
+                width: 100px;
+                height: 50px;
+                border-radius: 10px;
+                border: #ffffff;
+                background-color: #ffffff;
+            }
+            .custom-button a {
+                text-decoration: none;
+                color: #000000;
+            }
+            .menu {
+                display: flex;
+                background-color: #ffffff;
+                align-items: center;
+                justify-content: center;
+            }
+            .menu a {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            .menu-button {
+                background-color: #ffffff;
+                border: none;
+                padding: 10px;
+                margin: 0px;
+                cursor: pointer;
+                position: relative;
+                border: #ffffff;
+                font-size: larger;
+                font-family: Arial, sans-serif;
+                width: 140px;
+                height: 50px;
+                text-align: center;
+            }
+
+            
+
+            .container {
+                font-size: xx-large;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* 화면 전체 높이에 대한 100% */
+            }
+            
+            .city_box {
+                font-size: large;
+                width: 1280px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin-left: 124px;
+            }
+            
+            .city_box li {
+                width: 256px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+            }
+
+            .city_box a {
+                text-decoration: none;
+                color: #000000;
+              
+            }
+            .img-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* 가로 중앙 정렬 */
+                margin-left: 110px;
+                margin-right: 110px;
+            }
+
+            .img-container .img-wrapper {
+                width: 25%; /* 가로 한 줄에 4개씩 배치 */
+                padding: 10px;
+                box-sizing: border-box;
+                text-align: center;
+                max-width: 250px; /* 최대 너비 설정 */
+                height: 250px; /* 고정된 높이 설정 */
+            }
+
+            .img-container img {
+                width: 100%;
+                height: 100%;
+                border: 2px solid #000;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="logo">
+                <a href="Main.html">
+                    <img src="https://postfiles.pstatic.net/MjAyMzEwMTNfMjYw/MDAxNjk3MTYzNjcwMDYy.XPihVSwY_hfqEmHzfC0ToqtTn8FVtTvsFqmXfFzll94g.qHLCwIalJGLgLIH3TmP6WdFGhIxTDLHeAq0zM2cSbDMg.PNG.dnj1510/%EA%B2%BD%EB%B6%81_%EA%B8%B8%EB%9D%AC%EC%9E%A1%EC%9D%B4.png?type=w580" alt="로고">
+                </a>
+            </div>
+            <div class="search-container">
+                <form id="searchForm" name="searchForm" method="post" action="/search.do" class="search-form">
+                    <input type="hidden" id="cate_top">
+                    <input type="text" name="title" id="title" title="검색어 입력" placeholder="검색어를 입력하세요" class="flex-1">
+                    <button type="submit" id="searchButton">
+                        <img src="https://postfiles.pstatic.net/MjAyMzExMDVfMjkw/MDAxNjk5MTc2ODE4MjY1.ip9TlhvhZz4ZCGy8tKMO6vKr-3kOG8T-Zy5MBXG6Yogg.zVE42yT4Hf3MUp96DK93HZOmDslaj_YV0W2uJ0Z7QEUg.PNG.dnj1510/search.png?type=w580" alt="검색">
+                    </button>
+                </form>
+            </div>
+            
+            <div class="buttons">
+                <button class="custom-button"><a href="Wishlist.html">위시리스트</a></button>
+                <button class="custom-button"><a href="MyPage.html">마이페이지</a></button>
+                <button class="custom-button"><a href="Login.html">로그인</a></button>
+                <button class="custom-button"><a href="CS.html">고객센터</a></button>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-button">
+                <a href="Restaurant.html">맛집</a>               
+            </div>
+            <div class="menu-button">
+                <a href="Culture.html">문화</a>                
+            </div>
+            <div class="menu-button">
+                <a href="Activity.html">체험</a>                
+            </div>
+            <div class="menu-button">
+                <a href="Nature.html">자연</a>
+            </div>
+            <div class="menu-button">
+                <a href="Traffic.html">교통</a>
+            </div>
+        </div>
+        <div class="container" style="height: 140px;">
+            <span><b>맛집</b></span>
+        </div>
+        <div class="city_box">
+            <a href="#"><li>포항</li></a>
+            <a href="#"><li>경주</li></a>
+            <a href="#"><li>울진</li></a>
+            <a href="#"><li>영덕</li></a>
+            <a href="#"><li>영천</li></a>
+        </div>
+        <div class="img-container">
+            <div class="img-wrapper">
+	      <a href="po1.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMDNfMjQ0%2FMDAxNjY3NDQzNjM4MDAy.JYHbU2tGi4nRe8CW6cuA-XsOSDAAcMYXii0GvyWWS3Ig.r26OLBej4gSRGfVCqQsZ6kPod1oY4rTongdOmIqm16cg.JPEG.duadlswk90%2FIMG_0363.JPG&type=sc960_832", alt="다락방과메기">
+            </div>
+            <div class="img-wrapper">
+	      <a href="po2.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMjdfMjU4%2FMDAxNjk4MzY0MDM3MjUy.IBl9AkbRqGOaz0GyVM4SaB9Omo-vN49vhwJLzKfD_NAg.QpEY9SCOSy5MPYyog2cGJKZyC9rzAp-JRA1HQtOPZ94g.JPEG.heb8698%2FIMG_6893.jpg&type=sc960_832", alt="환여횟집">
+            </div>
+            <div class="img-wrapper">
+	      <a href="kyung1.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMjZfNDAg%2FMDAxNjk4MzE2MDI5Mzg3.w0I7yKUssVngyF_PqmwRY3rl7w3MV13KxbxpBct27a0g.VsKhEfrMW_pSPcqokZ8olA51MYBnr99LyNHfAyMLTHcg.JPEG.mcl9999%2F20231024_085630.jpg&type=sc960_832", alt="교리김밥">
+            </div>
+            <div class="img-wrapper">
+	      <a href="kyung2.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA0MDhfMTA5%2FMDAxNjE3ODkwOTg1NjAz.lLZRHFE81jDkvOOjpIipGY_xaqxGc_5csaV66SbAQswg.PZpIqSncwGQFhZvwiQr8fwI4a-ynVBhEEgDJIaEYixcg.JPEG.dhkdhk7713%2F20210408%25A3%25DF151123.jpg&type=sc960_832", alt="어마무시">
+            </div>
+            <div class="img-wrapper">
+	      <a href="ul1.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA4MDVfNzEg%2FMDAxNTk2NjI5MzU2NjAw.nUgm9wVwBz5G7XEZ8n8dK3TffDl_zO5Xqa-cwIHCHqMg.mA7TeJdEISfTx3kZ3XXcjuqYhAkFAp0ngxBT6BN7shgg.JPEG.bellheim%2F%25BF%25EF%25C1%25F8_%25BA%25F1%25BA%25F6%25C2%25AB%25BA%25C0.jpg&type=sc960_832", alt="제일반점">
+            </div>
+            <div class="img-wrapper">
+	      <a href="ul2.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAxMjJfOTYg%2FMDAxNjQyODE1NTQ4MTc2.GSUlp2dgsHUdOov1cobSgGV0TjYYqUNz5fI5fgOQNtAg.AuIo_4PMt0nmVIC0cP1IMMYt84S6RcZxpqip0iEce90g.JPEG.hrsk0812%2F1642812779705.jpg&type=sc960_832", alt="죽변우성식당">
+            </div>
+            <div class="img-wrapper">
+	      <a href="yung1.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA4MThfNjIg%2FMDAxNTM0NTYwOTE0NTE2.2nss1LYgKFXbjLrg7fRtfvGnF9G4jH1F1cvU0WmdA_cg.R4q6O50LcVx8QJIJMtwYKYeJGRH8fDWm1qoI4KqPIlog.JPEG.twinkia%2F18-07-27_%25BF%25B5%25B4%25F6%25B0%25AD%25B1%25B8%25C7%25D7%25B4%25EB%25B0%25D4%25B0%25C5%25B8%25AE.jpg&type=sc960_832", alt="강구항대게직판장 대명대게">
+            </div>
+            <div class="img-wrapper">
+	      <a href="yung2.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMDJfMTUx%2FMDAxNjk2MjQ1OTkwNjc5.BrDg-yPva7PbBY69aOuu0O7UnrrJGpZuvf0Mv3rrYrUg.3r5bTokWHz8tlQaf2xEjOX2BeAhcPMmS7wL_LwEmv5sg.PNG.favmyet%2F%25B4%25D9%25BF%25EE%25B7%25CE%25B5%25E5_%25281%2529.png&type=sc960_832", alt="보움">
+            </div>
+            <div class="img-wrapper">
+	      <a href="yong.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2F20160218_213%2F1455722564521oXzYL_JPEG%2FIYo_YvchkvxjnxPtPcE3fxAeahuk.jpg&type=sc960_832", alt="삼송꾼만두">
+            </div>
+            <div class="img-wrapper">
+	      <a href="yong2.html">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDEyMjFfMTAz%2FMDAxNjA4NTQ3MzAxMDI5.WPVpNAZb_W8z84mm_b2j3RA5aIvLr5kvA7LJnirTXjEg.y1yQVh-WzrwbF2yq1_tF_qIgTKf1vqzgSNokoKdskigg.JPEG.deeplandm%2FIMG_0681.jpg&type=sc960_832", alt="편대장영화식당">
+            </div>
+        </div>
+    </body>
+</html>
